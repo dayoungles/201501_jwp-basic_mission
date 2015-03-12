@@ -39,4 +39,6 @@ public class AnswerDao {
 		
 		return jdbcTemplate.query(sql, rm, questionId);
 	}
+	
+
 }

@@ -53,9 +53,9 @@
 		</div>
 
 		<!-- comments start -->
-		<c:forEach var="answer" items="${answers}">
-			<div class="comments">
-				<h3>댓글 수 : ${question.countOfComment}</h3>
+		<div class="comments">
+			<h3>댓글 수 : ${question.countOfComment}</h3>
+			<c:forEach var="answer" items="${answers}">
 				<div class="comment">
 					<div class="comment-metadata">
 						<span class="comment-author">${answer.writer}</span> <span
@@ -91,8 +91,8 @@
 	            	<a href="#">삭제</a>
 	            </div>
 	        </div> -->
-			</div>
-		</c:forEach>
+			</c:forEach>
+		</div>
 		<!-- comments end -->
 
 	</div>
