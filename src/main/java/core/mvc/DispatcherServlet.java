@@ -13,7 +13,7 @@ import next.support.context.ContextLoaderListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@WebServlet(name="dispatcher", urlPatterns="*.next")
+@WebServlet(name="dispatcher", urlPatterns="*.next", loadOnStartup=1)//http://www.codejava.net/java-ee/servlet/webservlet-annotation-examples
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
