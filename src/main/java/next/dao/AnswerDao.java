@@ -40,5 +40,10 @@ public class AnswerDao {
 		return jdbcTemplate.query(sql, rm, questionId);
 	}
 	
-
+	public void delete(Answer answer){
+		JdbcTemplate jdbcTemplate = new JdbcTemplate();
+	
+		String sql = "DELETE FROM ANSWERS WHERE questionId=? AND answerId=?;";
+		jdbcTemplate.update(sql, answer.getQuestionId(), answer.getAnswerId());
+	}
 }

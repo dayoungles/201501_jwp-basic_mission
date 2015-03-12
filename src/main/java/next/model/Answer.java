@@ -17,6 +17,11 @@ public class Answer {
 		this(0, writer, contents, new Date(), questionId);
 	}
 	
+	public Answer(long answerId, long questionId){
+		this.answerId = answerId;
+		this.questionId= questionId;
+	}
+	
 	public Answer(long answerId, String writer, String contents, Date createdDate, long questionId) {
 		this.answerId = answerId;
 		this.writer = writer;
