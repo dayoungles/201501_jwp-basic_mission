@@ -16,7 +16,8 @@ public class ApiListController extends AbstractController {
 	public ModelAndView execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		List<Question> questions;
-		QuestionDao questionDao = new QuestionDao();
+		QuestionDao questionDao = QuestionDao.getInstance();
+				
 		questions = questionDao.findAll();
 		
 		ModelAndView mav = jsonView();

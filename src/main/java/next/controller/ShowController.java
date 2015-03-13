@@ -24,8 +24,9 @@ public class ShowController extends AbstractController {
 	@Override
 	public ModelAndView execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		QuestionDao questionDao = new QuestionDao();
-		AnswerDao answerDao = new AnswerDao();
+		QuestionDao questionDao = QuestionDao.getInstance();
+				
+		AnswerDao answerDao = AnswerDao.getInstance();
 		Question question;
 		List<Answer> answers;
 
