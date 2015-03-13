@@ -25,6 +25,8 @@
 * 그리고 request에 딸려온 주소는 requestMapping 객체의 findController에 의해서 해당하는 ListController를 가지고 execute한다.
 
 * 여기에서 list.jsp를 이용해서 뷰를 만들어 리턴한다. 
+
 #### 10. ListController와 ShowController가 멀티 쓰레드 상황에서 문제가 발생하는 이유에 대해 설명하라.
-* 
+
+* 필드에 변수를 생성해 놓았을 때, 각각의 스레드들이 힙에 올라가있는 하나의 인스턴스를 사용하기 때문에 참조하는데 오류가 발생한다. 필드 변수를 모두 메소드 안으로 옮겼다. 
 
