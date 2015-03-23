@@ -15,7 +15,7 @@ public class AnswerDao {
 	private AnswerDao(){
 		
 	}
-	
+	//12번도 완성되어 있었다고 한다. 
 	public static AnswerDao getInstance(){
 		return answerDao;
 	}
