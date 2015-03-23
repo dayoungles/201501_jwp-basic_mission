@@ -12,7 +12,7 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import core.jdbc.ConnectionManager;
 
-@WebListener
+@WebListener //파일이 없어져서 1번부터 다시 확인 함. 
 public class ContextLoaderListener implements ServletContextListener {
 	private static final Logger logger = LoggerFactory.getLogger(ContextLoaderListener.class);
 	
