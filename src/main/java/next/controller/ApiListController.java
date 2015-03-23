@@ -24,6 +24,6 @@ public class ApiListController extends AbstractController {
 		mav.addObject("questions", questions);
 		return mav;
 		
-	}
+	}//11번도 만들어 놓았다고 한다. 
 
 }

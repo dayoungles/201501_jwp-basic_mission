@@ -31,9 +31,7 @@ public class DispatcherServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String requestUri = req.getRequestURI();
 		logger.debug("Method : {}, Request URI : {}", req.getMethod(), requestUri);
-//		//1번을 이런 식으로 해결해도 되나.. 
-//		ContextLoaderListener cl = new ContextLoaderListener();
-//		cl.contextInitialized(null);
+
 		Controller controller = rm.findController(urlExceptParameter(req.getRequestURI()));
 		ModelAndView mav;
 		try {
