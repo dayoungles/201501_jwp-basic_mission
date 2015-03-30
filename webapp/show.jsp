@@ -32,6 +32,7 @@
 		</div>
 
 		<br /> <a href="/list.next">목록으로</a>
+		<a href="/deleteQuestion.next?questionId=${question.questionId}">삭제하기</a>
 <!-- 7번 답안 완성되어 있음 ㅋ -->
 		<h3>답변</h3>
 		<div class="answerWrite">

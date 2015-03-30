@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import next.controller.ApiListController;
+import next.controller.DeleteQuestionController;
 import next.controller.DeleteReplyController;
 import next.controller.ListController;
 import next.controller.AddReplyController;
@@ -25,6 +26,7 @@ public class RequestMapping {
 		mappings.put("/api/list.next", new ApiListController());
 		mappings.put("/api/addanswer.next", new AddReplyController());
 		mappings.put("/api/deleteAnswer.next", new DeleteReplyController());
+		mappings.put("/deleteQuestion.next", new DeleteQuestionController());
 		
 		logger.info("Initialized Request Mapping!");
 	}
