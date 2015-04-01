@@ -26,7 +26,7 @@ public class AnswerDaoTest {
 	public void crud() throws Exception {
 		long questionId = 1L;
 		Answer expected = new Answer("javajigi", "answer contents", questionId);
-		AnswerDao dut = AnswerDao.getInstance();
+		JdbcAnswerDao dut = JdbcAnswerDao.getInstance();
 		dut.insert(expected);
 		
 		List<Answer> answers = dut.findAllByQuestionId(questionId);

@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import next.dao.AnswerDao;
+import next.dao.JdbcAnswerDao;
+import next.dao.JdbcQuestionDao;
 import next.dao.QuestionDao;
 import next.model.Answer;
 
@@ -23,8 +25,8 @@ public class AddReplyController extends AbstractController{
 			HttpServletResponse response) throws Exception {
 		List<Answer> answers;
 		Answer answer;
-		AnswerDao answerDao = AnswerDao.getInstance();
-		QuestionDao questionDao = QuestionDao.getInstance();
+		AnswerDao answerDao = JdbcAnswerDao.getInstance();
+		QuestionDao questionDao = JdbcQuestionDao.getInstance();
 		
 		long questionId = ServletRequestUtils.getLongParameter(request, "questionId");
 		String writer = ServletRequestUtils.getStringParameter(request, "writer");

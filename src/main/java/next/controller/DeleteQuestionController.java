@@ -5,13 +5,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import next.dao.AnswerDao;
+import next.dao.JdbcAnswerDao;
+import next.dao.JdbcQuestionDao;
 import next.dao.QuestionDao;
 import next.model.Answer;
 import next.model.Question;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import core.mvc.AbstractController;
 import core.mvc.DispatcherServlet;
 import core.mvc.ModelAndView;
@@ -28,11 +31,11 @@ public class DeleteQuestionController extends AbstractController{
 		logger.debug("questionID", questionId);
 		
 		//questionId로 question을 찾아온다.
-		QuestionDao dao = QuestionDao.getInstance();
+		QuestionDao dao = JdbcQuestionDao.getInstance();
 		Question question = dao.findById(questionId);
 		boolean othersReply = false;//다른 놈 답변이 있으면 true
 		if(question.getCountOfComment() != 0){
-			AnswerDao answerDao = AnswerDao.getInstance();
+			AnswerDao answerDao = JdbcAnswerDao.getInstance();
 			List<Answer> answerList= answerDao.findAllByQuestionId(questionId);
 			for (Answer answer : answerList) {
 				if(!answer.getWriter().equals(question.getWriter())){

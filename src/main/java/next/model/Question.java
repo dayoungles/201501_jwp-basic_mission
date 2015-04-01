@@ -1,6 +1,8 @@
 package next.model;
 
+
 import java.util.Date;
+import java.util.List;
 
 public class Question {
 	private long questionId;
@@ -15,6 +17,8 @@ public class Question {
 	
 	private int countOfComment;
 	
+	private List<Answer> answers;
+	
 	public Question(String writer, String title, String contents) {
 		this(0, writer, title, contents, new Date(), 0);
 	}	
@@ -27,6 +31,7 @@ public class Question {
 		this.contents = contents;
 		this.createdDate = createdDate;
 		this.countOfComment = countOfComment;
+		
 	}
 
 	public long getQuestionId() {
@@ -86,4 +91,14 @@ public class Question {
 			return false;
 		return true;
 	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
+
+	public Object getAnswers() {
+		return answers;
+	} 
+
+
 }

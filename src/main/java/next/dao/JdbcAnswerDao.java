@@ -9,16 +9,20 @@ import next.model.Answer;
 import core.jdbc.JdbcTemplate;
 import core.jdbc.RowMapper;
 
-public class AnswerDao {
-	private static AnswerDao answerDao = new AnswerDao();
+public class JdbcAnswerDao implements AnswerDao {
+	private static JdbcAnswerDao answerDao = new JdbcAnswerDao();
 	
-	private AnswerDao(){
+	private JdbcAnswerDao(){
 		
 	}
 	//12번도 완성되어 있었다고 한다. 
-	public static AnswerDao getInstance(){
+	public static JdbcAnswerDao getInstance(){
 		return answerDao;
 	}
+	/* (non-Javadoc)
+	 * @see next.dao.MockAnswerDao#insert(next.model.Answer)
+	 */
+	@Override
 	public void insert(Answer answer) {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "INSERT INTO ANSWERS (writer, contents, createdDate, questionId) VALUES (?, ?, ?, ?)";
@@ -28,6 +32,10 @@ public class AnswerDao {
 				answer.getQuestionId());
 	}
 
+	/* (non-Javadoc)
+	 * @see next.dao.MockAnswerDao#findAllByQuestionId(long)
+	 */
+	@Override
 	public List<Answer> findAllByQuestionId(long questionId) {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "SELECT answerId, writer, contents, createdDate FROM ANSWERS WHERE questionId = ? "
@@ -48,6 +56,10 @@ public class AnswerDao {
 		return jdbcTemplate.query(sql, rm, questionId);
 	}
 	
+	/* (non-Javadoc)
+	 * @see next.dao.MockAnswerDao#delete(next.model.Answer)
+	 */
+	@Override
 	public void delete(Answer answer){
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 	

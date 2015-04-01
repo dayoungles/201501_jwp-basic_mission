@@ -9,14 +9,17 @@ import next.model.Question;
 import core.jdbc.JdbcTemplate;
 import core.jdbc.RowMapper;
 
-public class QuestionDao {
-	private static QuestionDao questionDao = new QuestionDao();
-	
-	private QuestionDao(){
+public class JdbcQuestionDao implements QuestionDao {
+	private static QuestionDao questionDao = new JdbcQuestionDao();
+	private JdbcQuestionDao(){
 	}
 	public static QuestionDao getInstance(){
 		return questionDao;
 	}
+	/* (non-Javadoc)
+	 * @see next.dao.QuestionDaoo#insert(next.model.Question)
+	 */
+	@Override
 	public void insert(Question question) {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "INSERT INTO QUESTIONS (writer, title, contents, createdDate, countOfComment) VALUES (?, ?, ?, ?, ?)";
@@ -28,6 +31,10 @@ public class QuestionDao {
 				question.getCountOfComment());
 	}
 	
+	/* (non-Javadoc)
+	 * @see next.dao.QuestionDaoo#findAll()
+	 */
+	@Override
 	public List<Question> findAll() {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "SELECT questionId, writer, title, createdDate, countOfComment FROM QUESTIONS "
@@ -47,6 +54,10 @@ public class QuestionDao {
 		return jdbcTemplate.query(sql, rm);
 	}
 
+	/* (non-Javadoc)
+	 * @see next.dao.QuestionDaoo#findById(long)
+	 */
+	@Override
 	public Question findById(long questionId) {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "SELECT questionId, writer, title, contents, createdDate, countOfComment FROM QUESTIONS "
@@ -67,6 +78,10 @@ public class QuestionDao {
 		return jdbcTemplate.queryForObject(sql, rm, questionId);
 	}
 	
+	/* (non-Javadoc)
+	 * @see next.dao.QuestionDaoo#plusOneMoreCommentCount(long)
+	 */
+	@Override
 	public void plusOneMoreCommentCount(long questionId){
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "UPDATE QUESTIONS SET countOfComment=countOfComment+1 WHERE questionId=?;";
@@ -74,12 +89,20 @@ public class QuestionDao {
 		jdbcTemplate.update(sql, questionId);	
 	}
 
+	/* (non-Javadoc)
+	 * @see next.dao.QuestionDaoo#minusOneCountOfComment(long)
+	 */
+	@Override
 	public void minusOneCountOfComment(long questionId) {
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "UPDATE QUESTIONS SET countOfComment=countOfComment-1 WHERE questionId=?;";
 		jdbcTemplate.update(sql, questionId);
 	}
 	
+	/* (non-Javadoc)
+	 * @see next.dao.QuestionDaoo#deleteQuestion(long)
+	 */
+	@Override
 	public void deleteQuestion(long questionId){
 		JdbcTemplate jdbcTemplate = new JdbcTemplate();
 		String sql = "DELETE FROM QUESTIONS WHERE questionId=?";

@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import next.dao.AnswerDao;
+import next.dao.JdbcAnswerDao;
+import next.dao.JdbcQuestionDao;
+import next.dao.MockQuestionDao;
 import next.dao.QuestionDao;
 import next.model.Answer;
 import next.model.Question;
@@ -24,9 +27,9 @@ public class ShowController extends AbstractController {
 	@Override
 	public ModelAndView execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		QuestionDao questionDao = QuestionDao.getInstance();
+		QuestionDao questionDao = JdbcQuestionDao.getInstance();
 				
-		AnswerDao answerDao = AnswerDao.getInstance();
+		AnswerDao answerDao = JdbcAnswerDao.getInstance();
 		Question question;
 		List<Answer> answers;
 

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import next.dao.JdbcQuestionDao;
 import next.dao.QuestionDao;
 import next.model.Question;
 import core.mvc.AbstractController;
@@ -18,7 +19,7 @@ public class SaveController extends AbstractController {
 			HttpServletResponse response) throws Exception {
 		Question question;
 		List<Question> questions;
-		QuestionDao questionDao = QuestionDao.getInstance();
+		QuestionDao questionDao = JdbcQuestionDao.getInstance();
 		String writer = ServletRequestUtils.getRequiredStringParameter(request, "writer");
 		String title = ServletRequestUtils.getRequiredStringParameter(request, "title");
 		String contents = ServletRequestUtils.getRequiredStringParameter(request, "contents");
